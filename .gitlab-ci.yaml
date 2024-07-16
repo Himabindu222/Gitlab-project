@@ -19,6 +19,7 @@ install_mvn_trivy_docker_kubectl:
     - sudo apt-get update && sudo apt-get install -y trivy
     - sudo apt install -y docker.io && sudo chmod 666 /var/run/docker.sock
     - sudo snap install kubectl --classic
+    - docker run -d -p 9000:9000 sonarqube:lts-community
   tags:
     - job_runner    # runner that we have created
 
