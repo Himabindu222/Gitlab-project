@@ -15,7 +15,6 @@ install_mvn_trivy_docker_kubectl:
     - sudo apt install maven -y
     - wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
     - echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
-
     - sudo apt-get update && sudo apt-get install -y trivy
     - sudo apt install -y docker.io && sudo chmod 666 /var/run/docker.sock
     - sudo snap install kubectl --classic
@@ -36,6 +35,7 @@ trivy_fs_scan:
     - trivy fs --format table -o fs.html .
   tags:
     - job_runner
+    
 sonarqube_analysis:
   stage: sonarqube_analysis
   image:
@@ -72,6 +72,7 @@ push_image:
     - job_runner
   only:
     - main
+    
 scan:
   stage: image_scan
   script:
@@ -80,6 +81,7 @@ scan:
     - job_runner
   only:
     - main
+    
 deploy_to_k8s:
   stage: deploy
   variables:
