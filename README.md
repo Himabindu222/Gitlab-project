@@ -1,16 +1,16 @@
 # Gitlab-project
 
-STEP1
+#STEP1
 Create a repository
 (https://github.com/jaiswaladi246/Boardgame.git)
-Step2
+#STEP2
 Create a Runner and register the runner
 (create an instance and run commands given in the console while creating the runner)
-STEP3
+#STEP3
 Create a pipeline (refer the file .gitlab-ci.yaml)
  
 docker run -d -p 9000:9000 sonarqube:lts-community
-STEP4
+#STEP4
 Create a cluster 
 Run the below commands on both master and slave
 
@@ -27,9 +27,7 @@ sudo apt install -y kubeadm=1.30.0-1.1 kubelet=1.30.0-1.1 kubectl-1.30.0-1.1
 
 OR make a script for the above commands and run it on both master and slaves
 enter the below command in the master 
-sudo kubeadm init --pod-network-cidr=10.244.0.0/16   # this command will generate a token to join slave with master
-
-# Run the output of above command in worker node
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16   # this command will generate a token to join slave with master, Run the output of this command in worker node
 
 mkdir -p $HOME/ .kube
 sudo cp -i /etc/Kubernetes/admin.conf $HOME/ .kube/config
@@ -39,7 +37,6 @@ kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.24.0/
 kubectl apply -f https://githubusercontent.com/kubernetes/ingress-nqinx/controller-v0.49.0/deploy/static/provider/baremetal/deploy.yaml
 
 ![image](https://github.com/user-attachments/assets/62e332a2-e1f1-4f05-a740-96edfa9e4f6f)
-![image](https://github.com/user-attachments/assets/83c16cbc-3c8a-4d4d-b36a-fa8090992d0f)
 ![image](https://github.com/user-attachments/assets/a2a262c4-bd29-45ed-acfb-5b6d9c2123d2)
 ![image](https://github.com/user-attachments/assets/41f86d95-5752-4c14-abe9-5254796e31c9)
 
