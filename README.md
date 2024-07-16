@@ -27,25 +27,46 @@ Create a cluster
 Run below commands on both master and slave
 
 sudo apt-get update
+
 sudo apt install docker.io
+
 sudo chmod 666 /var/run/docker.sock
+
 sudo apt-get install -y apt-transport-https ca-certificates curl gnupg
+
 sudo mkdir -p -m 755 /etc/apt/keyrings
+
 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
 echo 'deb [signed-by-/etc/apt/keyrings/kubernetes-apt-keyring.gpg]
+
 https://pkqs.k8s.io/core:/stable:/v1.30/deb/ /' | sudo tee /etc/apt/sources.list.d/Kubernetes.list
+
 sudo apt update
+
 sudo apt install -y kubeadm=1.30.0-1.1 kubelet=1.30.0-1.1 kubectl-1.30.0-1.1
 
 OR 
 
 make a script for the above commands and run it on both master and slaves
+
 enter below command in the master 
+
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16   # this command will generate a token to join slave with master, Run the output of this command in worker node
 
 mkdir -p $HOME/ .kube
+
+cd $HOME/ .kube
+
+To enable base64 encryption
+cat config (copy the content from the file)
+
+echo -n 'paste the content copied' | base64  (now the file is encrypted)
+create a variable in gitlab (KUBECONFIG_CONTENT)
 sudo cp -i /etc/Kubernetes/admin.conf $HOME/ .kube/config
+
 sudo chown $(id -u) :$(id -g) $HOME/.kube/config
+
 kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.24.0/manifests/calico.yaml                   calico used for networking
 
 kubectl apply -f https://githubusercontent.com/kubernetes/ingress-nqinx/controller-v0.49.0/deploy/static/provider/baremetal/deploy.yaml
