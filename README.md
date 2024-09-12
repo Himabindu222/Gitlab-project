@@ -3,7 +3,6 @@
 #STEP1
 
 Create a repository in the gitlab
-(https://github.com/jaiswaladi246/Boardgame.git)
 
 #STEP2
 
